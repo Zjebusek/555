@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PS4Brew 5.55</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .loader {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -75px 0 0 -75px;
+
+      border: 10px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 10px solid #044595;
+      border-left: 10px solid #044595;
+      width: 120px;
+      height: 120px;
+
+      -webkit-animation: spin 1s linear infinite;
+    }
+
+    .info {
+      overflow: hidden;
+      position: fixed;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      font-size: 45px;
+      font-family: sans-serif;
+
+      transform: translate(-50%, -50%);
+    }
+
+    .credits {
+      overflow: hidden;
+      position: fixed;
+      position: absolute;
+      top: 90%;
+      left: 50%;
+
+      font-size: 16px;
+      font-family: sans-serif;
+      text-align: center;
+
+      transform: translate(-50%, -90%);
+    }
+
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+  </style>
+  	<script>
+      var disableFeatures = false;
+      var ua = navigator.userAgent;
+      var playstationOrNot = ua.substring(ua.indexOf("5.0 (") + 5, ua.indexOf(") Apple") - 7);
+
+      // If the system is not a playstation, disable features, display error
+      if(playstationOrNot != "PlayStation")
+      {
+      alert("mmm... This is only for PS4s")
+        document.write('<div class="alert alert-danger"><strong>You are not on a PS4, annndddd Disabled!</strong></div>');
+        window.stop(); //works in all browsers but IE    
+if ($.browser.msie) {document.execCommand("Stop");}; //works in IE, 
+        disableFeatures = true;
+      }
+
+      // If the system is a playstation, ensure the version is 5.55!
+      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) != "5.55")
+      {
+      alert("mmmm... you clicked 5.55 exploits but This PS4 is not 5.55")
+        document.write('<div class="alert alert-danger"><strong>Your PS4 is not on FW 5.55!</strong> Your current running FW version is ' + ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) + ',</div>');
+                window.stop(); //works in all browsers but IE    
+if ($.browser.msie) {document.execCommand("Stop");}; //works in IE, 
+        disableFeatures = true;
+      }
+
+      // If we've made it this far, the system must be a PS4 and must be version 5.55
+      else
+      {
+      alert("Ye.. your on 5.55")
+        document.write('<div class="alert alert-success"><strong>Congratulations!</strong> We\'ve detected your PlayStation 4 is running FW 5.55</div>');
+      }
+    </script>
+</head>
+<body style="margin:0;">
+  <script>
+    window.didload = 0;
+    window.didpost = 0;
+
+    window.onload = function () {
+      window.didload = 1;
+      if (window.didpost == 1)
+        setTimeout(window.stage2, 1500);
+    }
+    window.postExpl = function () {
+      window.didpost = 1;
+      if (window.didload == 1)
+        setTimeout(window.stage2, 1500);
+    }
+
+    function allset() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("allset").style.display = "block";
+    }
+
+    function awaitpl() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("awaiting").style.display = "block";
+    }
+
+    function fail(info) {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("fail").style.display = "block";
+    }
+  </script>
+
+  <div id="loader" class="loader"></div>
+
+  <div id="awaiting" class="info" style="display:none;">
+    Awaiting Payload...
+  </div>
+
+  <div id="allset" class="info" style="display:none;">
+    You're all set!
+  </div>
+
+  <div id="fail" class="info" style="display:none;">
+    Something went wrong :(
+  </div>
+
+  <div id="badfw" class="info" style="display:none;">
+    Only firmware 5.55 is supported!
+  </div>
+
+  <div id="footer" class="credits">
+    <ul style="list-style: none;padding-left:0">
+      <li>Bug from qwertyoruiopz</li>
+      <li>Homebrew thanks to flatz, xvortex</li>
+      <li>Implementation by specter</li>
+      <li><3 OpenOrbis Team</li>
+    </ul>
+  </div>
+
+  <script src="./rop.js"></script>
+  <script src="./syscalls.js"></script>
+  <script src="./expl.js"></script>
+  <script src="./userland.js"></script>
+  <script src="./homebrew.js"></script>
+  <script src="./mira.js"></script>
+  <pre id="console"></pre>
+</body>
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpsh'},{'server':'p3plcpnl0967'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script></html>
